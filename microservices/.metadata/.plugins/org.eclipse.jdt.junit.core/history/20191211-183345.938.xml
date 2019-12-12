@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RegisterationTesing" project="registration" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.marthubproject.registration.RegisterationTesing" time="0.049" displayname="RegisterationTesing" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]">
+    <testcase name="testGetAllUsers" classname="com.marthubproject.registration.RegisterationTesing" time="0.033" displayname="testGetAllUsers" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testGetAllUsers(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="testLoadByUserNameNotFoundException" classname="com.marthubproject.registration.RegisterationTesing" time="0.016" displayname="testLoadByUserNameNotFoundException" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testLoadByUserNameNotFoundException(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="testForUserExist" classname="com.marthubproject.registration.RegisterationTesing" time="0.0" displayname="testForUserExist" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testForUserExist(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="mockTestLoadUserByUsername" classname="com.marthubproject.registration.RegisterationTesing" time="0.0" displayname="mockTestLoadUserByUsername" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:mockTestLoadUserByUsername(com.marthubproject.registration.RegisterationTesing)]"/>
+  </testsuite>
+</testrun>

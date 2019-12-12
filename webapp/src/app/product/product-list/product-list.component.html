@@ -1,0 +1,15 @@
+<div class="content-list">
+<app-product-search (searchEmitter)="fillterData($event)" (sortEmitter)="sort($event)"></app-product-search>
+<div class="container-fluid mb-5" id="movieGroup">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-3 mb-3" *ngFor="let product of filteredList">
+        <span >
+          <app-product-info [userType] = userType 
+                            [productDetails] = product
+                            (deleteEmitter) = "deleteProduct($event)"></app-product-info>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>

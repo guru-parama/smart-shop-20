@@ -1,0 +1,37 @@
+<div class="jumbotron bg-transparant ">
+    <div class="mb-2 display-4"> Find Product</div>
+    <div class="input-group">
+        <button class="form-control col-2 col-lg-1 col-md-1 "><i
+                class="material-icons text-dark">search</i></button>
+        <input  class="form-control button my-0 bg-transparent " 
+                type="text" 
+                placeholder="Search Product" 
+                [(ngModel)] = "searchString" 
+                (keyup)="filter()">
+        <div class="form-inline mb-0">
+            <div class="h6">
+                <label for="sort"> &nbsp; SortBy &nbsp;</label>
+            </div>
+            <div class="input-group">
+                <select id="sort" 
+                        name="sort" 
+                        class="form-control custom-select bg-transparent" 
+                        [(ngModel)] = "sortType">
+                    <option value="name">By Name</option>
+                    <option value="price">By Price</option>
+                    <option value="stock">By Availablity</option>
+                    <option value="popular">By Popularity</option>
+                </select>
+                        <button class="form-control col-3" 
+                                (click) = "sort()"
+                                type="button"><i
+                                class="material-icons text-dark">filter_list</i></button>
+            </div>   
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4" *ngIf = "userType == 'O' || userType == 'M'">
+    <strong class="align-middle mr-3" >Offer Management : </strong>
+    <a class="btn btn-primary mr-3" routerLink="../offer-add">Add offers</a>
+    <a class="btn btn-info" routerLink="../offer-update">View offers</a>
+    </div>
+</div>

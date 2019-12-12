@@ -1,0 +1,60 @@
+package com.marthubproject.registration.service;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.marthubproject.registration.dao.UserRepository;
+import com.marthubproject.registration.exception.UserAlreadyExistsException;
+import com.marthubproject.registration.model.User;
+
+@Service
+public class UserService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	public UserService(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
+
+	public void addUser(User user) throws UserAlreadyExistsException {
+		LOGGER.info("Start");	
+		   if(userRepository.findByUserId(user.getUserId()) !=  null) {
+			   throw new UserAlreadyExistsException();
+		   }
+		   else {			
+			   userRepository.save(user);
+		   }
+		LOGGER.info("End");
+	}
+	
+	
+
+	public List<User> getAllUsers(){
+		return userRepository.getAllUsers();
+	}
+	
+	public void update(User user) {
+		userRepository.save(user);
+	}
+
+	public List<User> getAllUsersForBilling() {
+		return userRepository.getAllUsersforbilling();
+	}
+	 
+	public User getAllUser(String id) {
+		return userRepository.findByUserId(id);
+	}
+	
+	public User getUserByContact(long number) {
+		return userRepository.findByContactNumber(number);
+	}
+}

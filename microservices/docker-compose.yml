@@ -1,0 +1,68 @@
+version: '3'
+services:
+  marthub-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "33061:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - D:\marthub-final prj\marthubdb:/var/lib/mysql
+      - ./dbscripts:/docker-entrypoint-initdb.d
+
+
+  eureka-discovery-server:
+    image: eureka-discovery-app
+    build: D:\demo-project\micro-services\eureka-discovery-server
+    ports:
+      - 8761:8761
+
+
+  userauth-service:
+    image: userauth-app
+    build: D:\marthub-final prj\microservices\user-auth
+    ports:
+      - 8092:8092
+    depends_on:
+      - marthub-mysql
+    links:
+      - marthub-mysql
+
+  registration-service:
+    image: registration-app
+    build: D:\marthub-final prj\microservices\registration
+    ports:
+      - 8091:8091
+    depends_on:
+      - marthub-mysql
+    links:
+      - marthub-mysql
+
+  product-service:
+    image: product-app
+    build: D:\marthub-final prj\microservices\products
+    ports:
+      - 8093:8093
+    depends_on:
+      - marthub-mysql
+    links:
+      - marthub-mysql
+
+
+  zuul-gateway:
+    image: zuul-gateway-app
+    build: D:\marthub-final prj\microservices\zuul-gateway
+    ports:
+      - 8086:8086
+
+
+  angular:
+    image: angular-app
+    build: D:\marthub-final prj\webapp
+    ports:
+      - 4200:80
+    depends_on:
+      - zuul-gateway
+    links:
+      - zuul-gateway
+

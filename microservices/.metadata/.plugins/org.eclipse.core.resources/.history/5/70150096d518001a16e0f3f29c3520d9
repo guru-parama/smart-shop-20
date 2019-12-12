@@ -1,0 +1,55 @@
+package com.cognizant.marthubproject.products.model;
+
+import java.util.Date;
+import java.util.Map;
+
+public class BillFetch {
+
+	private int id;
+	private Date purchaseDate;
+	private double total;
+	private int rewardPoints;
+	private Map<Integer, Integer> productMap;
+	private int userId;
+	public BillFetch() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	public int getRewardPoints() {
+		return rewardPoints;
+	}
+	public void setRewardPoints(int rewardPoints) {
+		this.rewardPoints = rewardPoints;
+	}
+	public Map<Integer, Integer> getProductMap() {
+		return productMap;
+	}
+	public void setProductMap(Map<Integer, Integer> productMap) {
+		this.productMap = productMap;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.marthubproject.registration.controller;
+
+public class UserController {
+
+}

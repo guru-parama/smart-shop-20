@@ -1,0 +1,11 @@
+package com.cognizant.marthubproject.products.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.cognizant.marthubproject.products.model.Bill;
+
+public interface BillRepository extends JpaRepository<Bill, Integer> {
+	@Query(nativeQuery = true, value = "select max(b_d_id) from bill_details;")
+	int findMaximunBillDetailsId();
+}

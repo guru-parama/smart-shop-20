@@ -1,0 +1,5 @@
+package com.marthubproject.registration.dao;
+
+public class User {
+
+}

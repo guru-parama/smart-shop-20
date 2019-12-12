@@ -1,0 +1,21 @@
+package com.marthubproject.registration.dao;
+
+public class User {
+
+	private String userId;
+	private String firstName;
+	private String lastname;
+	private String gender;
+	private int age;
+	private int contactNumber;
+	private String password;
+	private String userType;
+	private String status;
+	private String question1;
+	private String answer1;
+	private String question2;
+	private String answer2;
+	private String question3;
+	private String answer3;
+	
+}

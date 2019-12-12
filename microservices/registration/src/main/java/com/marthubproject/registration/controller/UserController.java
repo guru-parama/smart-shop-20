@@ -1,0 +1,93 @@
+package com.marthubproject.registration.controller;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.marthubproject.registration.exception.UserAlreadyExistsException;
+import com.marthubproject.registration.model.User;
+import com.marthubproject.registration.service.UserService;
+
+@RestController
+@CrossOrigin("*")
+@RequestMapping("/marthub")
+public class UserController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	PasswordEncoder encoder;
+	
+	@PostMapping("/register")
+	public void register(@RequestBody User user) throws UserAlreadyExistsException {
+		LOGGER.info("Start");
+		String encodedPassword = encoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		userService.addUser(user);
+		LOGGER.info("End");
+	}
+	 
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        LOGGER.info("Start");
+        LOGGER.info("End");
+        return new BCryptPasswordEncoder();
+    }
+	
+	@GetMapping("/users")
+	public List<User> getAllUsers(){
+		return userService.getAllUsers();
+	}
+	
+	@GetMapping("/users/{id}")
+	public User getUser(@PathVariable String id){
+		return userService.getAllUser(id);
+	}
+	
+	@GetMapping("/users-contact/{number}")
+	public User getUser(@PathVariable long number){
+		return userService.getUserByContact(number);
+	}
+	
+	@PutMapping("/users")
+	public void update(@RequestBody User user) {
+		LOGGER.info("Start");
+		String encodedPassword = encoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		userService.update(user);
+		LOGGER.info("End");
+	}
+	 
+	@PutMapping("/users/pwdchange")
+	public void updateuser(@RequestBody User user) {
+		LOGGER.info("Start");
+		String encodedPassword = encoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		userService.update(user);
+		LOGGER.info("End");
+	}
+	
+	@GetMapping("/users-billing")
+	public List<User> getAllUsersForBilling() {
+		LOGGER.info("Start");
+		LOGGER.info("End");
+		return userService.getAllUsersForBilling();
+	}
+	
+}

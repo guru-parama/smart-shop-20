@@ -1,0 +1,96 @@
+package com.cognizant.marthubproject.products.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="bill")
+public class Bill {
+
+	@Id
+	@Column(name = "b_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "b_purchase_date")
+	private Date purchaseDate;
+	
+	@Column(name = "b_total_amount")
+	private int total;
+	
+	@Column(name = "b_reward_points")
+	private int rewardPoints;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "bill_details", joinColumns = @JoinColumn(name = "bill_b_id"), inverseJoinColumns = @JoinColumn(name = "product_pr_id"))
+	private List<Product> Productlist;
+
+	public Bill() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Bill(int id, Date purchaseDate, int total, int rewardPoints, List<Product> productlist) {
+		super();
+		this.id = id;
+		this.purchaseDate = purchaseDate;
+		this.total = total;
+		this.rewardPoints = rewardPoints;
+		Productlist = productlist;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getRewardPoints() {
+		return rewardPoints;
+	}
+
+	public void setRewardPoints(int rewardPoints) {
+		this.rewardPoints = rewardPoints;
+	}
+
+	public List<Product> getProductlist() {
+		return Productlist;
+	}
+
+	public void setProductlist(List<Product> productlist) {
+		Productlist = productlist;
+	}
+
+	
+	
+}

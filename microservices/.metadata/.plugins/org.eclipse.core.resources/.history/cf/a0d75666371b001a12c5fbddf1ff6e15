@@ -1,0 +1,27 @@
+package com.cognizant.marthubproject.products.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.marthubproject.products.dao.OfferRepository;
+import com.cognizant.marthubproject.products.dao.ProductRepository;
+import com.cognizant.marthubproject.products.model.Offer;
+
+@Service
+public class OfferService {
+
+	@Autowired
+	OfferRepository offerRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	public void addOffer(Object offerObj) {
+		Offer offer = new Offer();
+		offerRepository.save(offer);
+	}
+	
+	public void updateOffer(Offer offer) {
+		offerRepository.save(offer);
+	}
+}

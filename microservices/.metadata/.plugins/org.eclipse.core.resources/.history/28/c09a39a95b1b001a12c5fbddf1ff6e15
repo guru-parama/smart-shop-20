@@ -1,0 +1,79 @@
+package com.cognizant.marthubproject.products.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.marthubproject.products.dao.BillRepository;
+import com.cognizant.marthubproject.products.dao.OfferRepository;
+import com.cognizant.marthubproject.products.dao.ProductRepository;
+import com.cognizant.marthubproject.products.dao.UserRepository;
+import com.cognizant.marthubproject.products.model.Bill;
+import com.cognizant.marthubproject.products.model.BillDetails;
+import com.cognizant.marthubproject.products.model.BillFetch;
+import com.cognizant.marthubproject.products.model.Product;
+import com.cognizant.marthubproject.products.model.ProductDetails;
+import com.cognizant.marthubproject.products.model.User;
+
+
+@Service
+public class BillService {
+	
+	@Autowired
+	BillRepository billRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Autowired
+	OfferRepository offerRepository; 
+
+	public List<Bill> getAllBills(){
+		return billRepository.findAll();
+	}
+	
+	public List<Bill> getBill(String id) {
+		return billRepository.getBill(id);
+	}
+	public void userBills(BillFetch userBill) {
+		int total = 0;
+		Bill bill = new Bill();
+		//bill.setId(userBill.getBillId());
+		bill.setPurchaseDate(userBill.getPurchaseDate());
+		User userDetails = userRepository.findById(userBill.getUserId()).get();
+		bill.setUser(userDetails);
+		
+		billRepository.save(bill);
+	
+		int billId = billRepository.findMaximunBillId();
+		Bill bill1 = billRepository.findById(billId).get();
+	
+		List<BillDetails> billDetailsList = new ArrayList<BillDetails>();
+		List<Integer> offerCodes = offerRepository.findOfferCodes(userBill.getPurchaseDate());
+		
+		float dt = 0 ;
+	
+		for(int i=0; i<userBill.getProductList().size() ;i++) {	
+				ProductDetails pd = userBill.getProductList().get(i);
+				Product product = productRepository.findById(pd.getProductId()).get();
+				long rate = product.getRatePerQuantity();
+				int quantity = pd.getQuantity();
+				total+=(rate * quantity);
+				product.setStockCount(product.getStockCount()-quantity);
+				billDetailsList.add( new BillDetails(billId, pd.getProductId(), pd.getQuantity()));
+		}
+		
+		bill1.setTotal(total);
+		bill1.setRewardPoints((total/100) *20);
+		bill1.setBillDetailsList(billDetailsList);
+			
+		billRepository.save(bill1);
+		
+	}
+	
+}

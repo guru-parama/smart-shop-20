@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ResgistrationMocMVCTest" project="registration" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.837" displayname="ResgistrationMocMVCTest" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]">
+    <testcase name="getAllUsers" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.5" displayname="getAllUsers()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getAllUsers()]"/>
+    <testcase name="getUser" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.25" displayname="getUser()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getUser()]"/>
+    <testcase name="getUserByContactNumber" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.056" displayname="getUserByContactNumber()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getUserByContactNumber()]"/>
+    <testcase name="getAllUsersForBilling" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.031" displayname="getAllUsersForBilling()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getAllUsersForBilling()]"/>
+  </testsuite>
+</testrun>

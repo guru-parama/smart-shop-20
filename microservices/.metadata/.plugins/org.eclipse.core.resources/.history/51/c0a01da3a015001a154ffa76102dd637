@@ -1,0 +1,15 @@
+package com.cognizant.marthubproject.products.security;
+
+public class Snippet {
+	@Override
+	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
+	    }
+	    
+	    @Bean
+	    public PasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+	
+}
+

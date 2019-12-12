@@ -1,0 +1,74 @@
+<header class="pt-4 content-offer">
+        <div class="container d-flex align-items-center">
+            <div class="mx-auto">
+                <h2 class="mt-3 text-center">Add Offer</h2>
+                <div class="col-12 text-center" *ngIf="errorFlag == true"><div class="alert alert-danger mb-0 mt-2">{{this.errorMessage}}</div></div>
+                <div class="col-12 text-center" *ngIf="offerAddFlag == true"><div class="alert alert-success mb-0 mt-2">Offer added succussfully <a class="nav-link" routerLink="../offer-update">Click here</a> to veiw offers</div></div>
+                <form class="pt-0 card-body" [formGroup]="addOfferForm">
+                    <div class="form-row">
+                    <div class="form-group col-md-9 mb-0">
+                        <label for="offerDate">Offer date *</label> 
+                        <input  type="text" 
+                                formControlName = "offerDate" 
+                                [ngClass]="[(addOfferForm.controls.offerDate.dirty || addOfferForm.controls.offerDate.touched) && addOfferForm.controls.offerDate.valid ? 'is-valid' : '',
+                                (addOfferForm.controls.offerDate.dirty || addOfferForm.controls.offerDate.touched) && addOfferForm.controls.offerDate.invalid ? 'is-invalid' : '', 
+                                (addOfferForm.controls.offerDate.valid || addOfferForm.controls.offerDate.invalid) ? 'form-control' : '']"
+                                id="offerDate" 
+                                placeholder="Enter offerDate"
+                                required>
+                         <div *ngIf="!addOfferForm.controls.offerDate.valid && (addOfferForm.controls.offerDate.dirty || addOfferForm.controls.offerDate.touched); else elseBlock" class="text-white">
+                                <div class="badge bg-danger col" *ngIf = "addOfferForm.controls.userId.errors.required">offerDate reqiured</div> 
+                        </div>                    
+                        <ng-template #elseBlock><br></ng-template>
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        <label for="offerPercentage">Offer % *</label> 
+                        <input  type="number" 
+                                formControlName = "offerPercentage" 
+                                [ngClass]="[(addOfferForm.controls.offerPercentage.dirty || addOfferForm.controls.offerPercentage.touched) && addOfferForm.controls.offerPercentage.valid ? 'is-valid' : '',
+                                (addOfferForm.controls.offerPercentage.dirty || addOfferForm.controls.offerPercentage.touched) && addOfferForm.controls.offerPercentage.invalid ? 'is-invalid' : '', 
+                                (addOfferForm.controls.offerPercentage.valid || addOfferForm.controls.offerPercentage.invalid) ? 'form-control' : '']"
+                                id="offerPercentage" 
+                                placeholder="Enter offerPercentage"
+                                required>
+                        <div *ngIf="!addOfferForm.controls.offerPercentage.valid && (addOfferForm.controls.offerPercentage.dirty || addOfferForm.controls.offerPercentage.touched); else elseBlock" class="text-white">
+                            <div class="badge bg-danger col" *ngIf = "addOfferForm.controls.offerPercentage.errors.required">First name reqiured</div> 
+                        </div>
+                        <ng-template #elseBlock><br></ng-template>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 mb-0">
+                        <label for="offerDetails">Details *</label>
+                        <input  type="text" 
+                                formControlName = "offerDetails" 
+                                [ngClass]="[(addOfferForm.controls.offerDetails.dirty || addOfferForm.controls.offerDetails.touched) && addOfferForm.controls.offerDetails.valid ? 'is-valid' : '',
+                                (addOfferForm.controls.offerDetails.dirty || addOfferForm.controls.offerDetails.touched) && addOfferForm.controls.offerDetails.invalid ? 'is-invalid' : '', 
+                                (addOfferForm.controls.offerDetails.valid || addOfferForm.controls.offerDetails.invalid) ? 'form-control' : '']"
+                                id="offerDetails" 
+                                placeholder="Enter offerDetails"
+                                required>
+                         <div *ngIf="!addOfferForm.controls.offerDetails.valid && (addOfferForm.controls.offerDetails.dirty || addOfferForm.controls.offerDetails.touched)" class="text-white">
+                                <div class="badge bg-danger col" *ngIf = "addOfferForm.controls.offerDetails.errors.required">Last name reqiured</div> 
+                            </div>
+                            <ng-template #elseBlock><br></ng-template>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                            <label for="product">
+                                Enter Product Id:
+                            </label>
+                            <select #productCode class="form-control" formControlName="product" id="product" >
+                                <option value="0">----Select----</option>
+                                <option value="{{product.id}}" *ngFor="let product of productList">{{product.name}} {{product.id}}</option>
+                            </select>
+                    </div>
+                        <div class="form-group col-lg-12  text-right p-0">
+                            <button class="btn col-3 btn-color" 
+                                    type="button" 
+                                    (click) = "addOffer(addOfferForm)" 
+                                    [disabled]="!addOfferForm.valid" >AddOffer</button>
+                        </div>
+            </div>
+        </form>
+            </div>
+        </div>
+    </header>
+    

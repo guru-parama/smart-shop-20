@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RegisterationTesing" project="registration" tests="5" started="5" failures="0" errors="1" ignored="0">
+  <testsuite name="com.marthubproject.registration.RegisterationTesing" time="0.139" displayname="RegisterationTesing" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]">
+    <testcase name="testGetAllUsers" classname="com.marthubproject.registration.RegisterationTesing" time="0.076" displayname="testGetAllUsers" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testGetAllUsers(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="testLoadByUserNameNotFoundException" classname="com.marthubproject.registration.RegisterationTesing" time="0.016" displayname="testLoadByUserNameNotFoundException" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testLoadByUserNameNotFoundException(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="newSignUp" classname="com.marthubproject.registration.RegisterationTesing" time="0.0" displayname="newSignUp" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:newSignUp(com.marthubproject.registration.RegisterationTesing)]">
+      <error>java.lang.NullPointerException&#13;
+	at com.marthubproject.registration.service.UserService.addUser(UserService.java:39)&#13;
+	at com.marthubproject.registration.RegisterationTesing.newSignUp(RegisterationTesing.java:72)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:44)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:74)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:80)&#13;
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39)&#13;
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)&#13;
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)&#13;
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(Unknown Source)&#13;
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)&#13;
+	at java.util.Iterator.forEachRemaining(Unknown Source)&#13;
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Unknown Source)&#13;
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)&#13;
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)&#13;
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(Unknown Source)&#13;
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(Unknown Source)&#13;
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)&#13;
+	at java.util.stream.ReferencePipeline.forEach(Unknown Source)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:89)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testForUserExist" classname="com.marthubproject.registration.RegisterationTesing" time="0.0" displayname="testForUserExist" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:testForUserExist(com.marthubproject.registration.RegisterationTesing)]"/>
+    <testcase name="mockTestLoadUserByUsername" classname="com.marthubproject.registration.RegisterationTesing" time="0.032" displayname="mockTestLoadUserByUsername" uniqueid="[engine:junit-vintage]/[runner:com.marthubproject.registration.RegisterationTesing]/[test:mockTestLoadUserByUsername(com.marthubproject.registration.RegisterationTesing)]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,49 @@
+package com.marthubproject.registration.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "us_id")
+	private int id;
+	@Column(name = "us_user_id")
+	private String userId;
+	@Column(name = "us_first_name")
+	private String firstName;
+	@Column(name = "us_last_name")
+	private String lastname;
+	@Column(name = "us_gender")
+	private String gender;
+	@Column(name = "us_age")
+	private int age;
+	@Column(name = "us_contact_number")
+	private int contactNumber;
+	@Column(name = "us_password")
+	private String password;
+	@Column(name = "us_user_type")
+	private String userType;
+	@Column(name = "us_status")
+	private String status;
+	@Column(name = "us_ques_1")
+	private String question1;
+	@Column(name = "us_ans_1")
+	private String answer1;
+	@Column(name = "us_ques_2")
+	private String question2;
+	@Column(name = "us_ans_2")
+	private String answer2;
+	@Column(name = "us_ques_3")
+	private String question3;
+	@Column(name = "us_ans_3")
+	private String answer3;
+	
+}

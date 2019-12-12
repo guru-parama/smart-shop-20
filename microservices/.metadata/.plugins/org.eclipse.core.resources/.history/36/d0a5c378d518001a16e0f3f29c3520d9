@@ -1,0 +1,5 @@
+package com.cognizant.marthubproject.products.model;
+
+public class ProductDetails {
+
+}

@@ -1,0 +1,14 @@
+package com.cognizant.marthubproject.products.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.cognizant.marthubproject.products.model.Offer;
+
+public interface OfferRepository extends JpaRepository<Offer, Integer> {
+
+	@Query(nativeQuery = true, value = "SELECT * FROM offer WHERE DATE(of_date) = CURDATE();")
+	List<Offer> getCurrentOffer();
+}

@@ -1,0 +1,28 @@
+package com.cognizant.marthubproject.products.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cognizant.marthubproject.products.model.Offer;
+import com.cognizant.marthubproject.products.service.OfferService;
+
+@RestController
+@RequestMapping("/marthub")
+public class OfferController {
+	
+	@Autowired
+	OfferService offerService; 
+	
+	@PostMapping("/offer")
+	public void addOffer(Offer offer) {
+		offerService.addOffer(offer);
+	}
+	
+	@PostMapping("/offer")
+	public void updateOffer(Offer offer) {
+		offerService.updateOffer(offer);
+	}
+
+}

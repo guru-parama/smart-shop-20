@@ -1,0 +1,46 @@
+package com.marthubproject.registration.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.marthubproject.registration.dao.UserRepository;
+import com.marthubproject.registration.exception.UserAlreadyExistsException;
+import com.marthubproject.registration.model.User;
+
+@Service
+public class UserService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	PasswordEncoder encoder;
+	
+	public void addUser(User user) throws UserAlreadyExistsException {
+		LOGGER.info("Start");	
+		   if(userRepository.findByUserId(user.getUserId()) !=  null) {
+			   throw new UserAlreadyExistsException();
+		   }
+		   else {
+			   String encodedPassword = encoder.encode(user.getPassword());
+			   user.setPassword(encodedPassword);
+			   userRepository.save(user);
+		   }
+		   LOGGER.info("End");
+	}
+	
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        LOGGER.info("Start");
+        return new BCryptPasswordEncoder();
+    }
+
+	
+}

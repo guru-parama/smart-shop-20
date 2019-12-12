@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ResgistrationMocMVCTest" project="registration" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.703" displayname="ResgistrationMocMVCTest" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]">
+    <testcase name="getAllUsers" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.344" displayname="getAllUsers()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getAllUsers()]"/>
+    <testcase name="getUser" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.281" displayname="getUser()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getUser()]"/>
+    <testcase name="getUserByContactNumber" classname="com.marthubproject.registration.ResgistrationMocMVCTest" time="0.078" displayname="getUserByContactNumber()" uniqueid="[engine:junit-jupiter]/[class:com.marthubproject.registration.ResgistrationMocMVCTest]/[method:getUserByContactNumber()]"/>
+  </testsuite>
+</testrun>

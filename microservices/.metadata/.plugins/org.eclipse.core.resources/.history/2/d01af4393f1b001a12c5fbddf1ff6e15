@@ -1,0 +1,40 @@
+package com.cognizant.marthubproject.products.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cognizant.marthubproject.products.model.Offer;
+import com.cognizant.marthubproject.products.service.OfferService;
+
+@RestController
+@RequestMapping("/marthub")
+public class OfferController {
+	
+	@Autowired
+	OfferService offerService; 
+	
+	@PostMapping("/offer/{id}")
+	public void addOffer(@RequestBody Offer offer, @PathVariable int id) {
+		
+		offerService.addOffer(offer, id);
+	}
+	
+	@PutMapping("/offer")
+	public void updateOffer(@RequestBody Offer offer) {
+		offerService.updateOffer(offer);
+	}
+	
+	@GetMapping("/offer")
+	public List<Offer> getCurrentOffer() {
+		return offerService.getCurrentOffers();
+	}
+
+}

@@ -1,0 +1,129 @@
+//package com.marthubproject.registration;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.jupiter.api.Assertions.*;
+//import static org.mockito.Mockito.when;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+//import org.mockito.Mockito;
+//import org.mockito.junit.MockitoJUnitRunner;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//
+//import com.marthubproject.registration.dao.UserRepository;
+//import com.marthubproject.registration.exception.UserAlreadyExistsException;
+//import com.marthubproject.registration.model.User;
+//import com.marthubproject.registration.security.AppUserDetailsService;
+//import com.marthubproject.registration.service.UserService;
+// 
+// 
+// 
+// @RunWith(MockitoJUnitRunner.class)
+// @SpringBootTest
+// public class RegisterationTesing {
+// 
+// 	private static final Logger LOGGER = LoggerFactory.getLogger(RegisterationTesing.class);
+// 	UserRepository repository = Mockito.mock(UserRepository.class);
+// 	AppUserDetailsService service = new AppUserDetailsService(repository);
+// 	UserService userService = new UserService(repository); 
+// 
+// 	@Test
+// 	public void mockTestLoadUserByUsername() {
+// 		LOGGER.info("Start");
+// 		when(repository.findByUserId("admin")).thenReturn(createUser());
+// 		UserDetails user = service.loadUserByUsername("admin");
+// 		String expected = "$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS";
+// 		assertEquals(expected, user.getPassword());
+// 		LOGGER.info("End");
+// 	}
+// 	private User createUser() {
+// 		User user = new User(2,"admin","admin","admin","Male",21,735,"$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+// 		return user;
+// 	}
+// 	private List<User> createUserList(){
+// 		List<User> userList = new ArrayList<User>();
+// 		userList.add(createUser());
+// 		return userList;
+// 	}
+// 	@Test(expected = UsernameNotFoundException.class)
+// 	public void testLoadByUserNameNotFoundException() throws UsernameNotFoundException {
+// 		when(repository.findByUserId("rohith")).thenReturn(null);
+// 		service.loadUserByUsername("rohith");
+// 	}
+// 	@Test(expected = UserAlreadyExistsException.class)
+// 	public void testForUserExist() throws UserAlreadyExistsException {
+// 		LOGGER.info("Start");
+// 		User user = new User(2,"admin","admin","admin","Male",21,735,"$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+// 		when(repository.findByUserId("admin")).thenReturn(user);
+// 		userService.addUser(user);
+// 		LOGGER.info("End");
+// 	}
+// 	
+//// 	@Test
+////	public void userDetailsSignUpTest() {
+////		when(repository.findByUserId(createUser().getUserId())).thenReturn(null);
+////		assertDoesNotThrow(() -> userService.addUser(createUser()));
+////	}
+// 	
+// 	@Test
+// 	public void newSignUp() throws UserAlreadyExistsException {
+// 		LOGGER.info("Start");
+// 		when(repository.findByUserId("admin")).thenReturn(null);
+// 		User user = new User(2,"admin","admin","admin","Male",21,735,"a","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+// 		userService.addUser(user);
+// 		LOGGER.info("End");
+// 
+// 	}
+// 	
+// 	@Test
+// 	public void testUpdateUser() {
+// 		LOGGER.info("Start");
+// 		User user = new User(2,"admin","admin","admin","Male",21,735,"a","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+// 		assertDoesNotThrow(() -> userService.update(user));
+// 		LOGGER.info("End");
+// 	}
+// 	
+// 	@Test
+// 	public void testGetAllUsers() {
+// 		LOGGER.info("Start");
+// 		when(repository.getAllUsers()).thenReturn(createUserList());
+// 		List<User> userListExp = new ArrayList<User>();
+// 		userListExp = userService.getAllUsers();
+// 		assertEquals(userListExp.get(0).getFirstName(), createUserList().get(0).getFirstName());
+// 		
+// 	}
+// 	
+// 	@Test
+// 	public void testGetAllUsersForBilling() {
+// 		LOGGER.info("Start");
+// 		when(repository.getAllUsersforbilling()).thenReturn(createUserList());
+// 		List<User> userListExp = new ArrayList<User>();
+// 		userListExp = userService.getAllUsersForBilling();
+// 		assertEquals(userListExp.get(0).getFirstName(), createUserList().get(0).getFirstName());
+// 		
+// 	}
+// 	
+// 	@Test
+//	public void MockTestgetUserByContactNumber() {
+//		when(repository.findByContactNumber(735L)).thenReturn(createUser());
+//		User user = userService.getUserByContact(735L);
+//			long expected =735L; 
+//			assertEquals(expected, user.getContactNumber());
+//	}
+// 	
+// 	@Test
+//	public void MockTestgetUserByUserID() {
+//		when(repository.findByUserId("admin")).thenReturn(createUser());
+//		User userList = userService.getAllUser("admin");
+//			String expected ="admin"; 
+//			assertEquals(expected, userList.getUserId());
+//	}
+//	
+// }

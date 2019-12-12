@@ -1,0 +1,22 @@
+package com.cognizant.marthubproject.products.model;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+public class BillFetch {
+
+private int id;
+	
+	private Date purchaseDate;
+	
+	private double total;
+	
+	private int rewardPoints;
+	
+	private List<Product> productlist;
+	
+	private Map<Product, Integer> productMap;
+	
+	private User user;
+}

@@ -1,0 +1,70 @@
+package com.marthubproject.registration;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.marthubproject.registration.dao.UserRepository;
+import com.marthubproject.registration.exception.UserAlreadyExistsException;
+import com.marthubproject.registration.model.User;
+import com.marthubproject.registration.security.AppUserDetailsService;
+import com.marthubproject.registration.service.UserService;
+ 
+ 
+ 
+ @RunWith(MockitoJUnitRunner.class)
+ @SpringBootTest
+ public class RegisterationTesing {
+ 
+ 	private static final Logger LOGGER = LoggerFactory.getLogger(RegisterationTesing.class);
+ 	UserRepository repository = Mockito.mock(UserRepository.class);
+ 	AppUserDetailsService service = new AppUserDetailsService(repository);
+ 	UserService UserService = new UserService(repository); 
+ 
+ 	@Test
+ 	public void mockTestLoadUserByUsername() {
+ 		LOGGER.info("Start");
+ 		when(repository.findByUserId("admin")).thenReturn(createUser());
+ 		UserDetails user = service.loadUserByUsername("admin");
+ 		String expected = "$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS";
+ 		assertEquals(expected, user.getPassword());
+ 		LOGGER.info("End");
+ 	}
+ 	private User createUser() {
+ 		User user = new User(2,"admin","admin","admin","Male",21,735,"$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+ 		return user;
+ 	}
+ 	@Test(expected = UsernameNotFoundException.class)
+ 	public void testLoadByUserNameNotFoundException() throws UsernameNotFoundException {
+ 		when(repository.findByUserId("rohith")).thenReturn(null);
+ 		service.loadUserByUsername("rohith");
+ 	}
+ 	@Test(expected = UserAlreadyExistsException.class)
+ 	public void testForUserExist() throws UserAlreadyExistsException {
+ 		LOGGER.info("Start");
+ 		User user = new User(2,"admin","admin","admin","Male",21,735,"$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+ 		when(repository.findByUserId("admin")).thenReturn(user);
+ 		service.signup(user);
+ 		LOGGER.info("End");
+ 	}
+ 	@Test
+ 	public void newSignUp() throws UserAlreadyExistsException {
+ 		LOGGER.info("Start");
+ 		when(repository.findByUserId("rohith")).thenReturn(null);
+ 		User user = new User(2,"admin","admin","admin","Male",21,735,"$2a$10$IoqonpxYeSWir9ir16Pb6.8sCa444mtsH6R6oH.ioWnHkpODsBsPS","O","A","what is your Nick name","aa","what is your favorite food","aa","what is your favorite holiday spot","aa");
+ 		service.signup(user);
+ 		LOGGER.info("End");
+ 
+ 	}
+
+	
+ }

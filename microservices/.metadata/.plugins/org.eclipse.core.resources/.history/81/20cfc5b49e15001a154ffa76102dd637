@@ -1,0 +1,7 @@
+package com.cognizant.marthubproject.products.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class ProductRepository implements JpaRepository<T, ID> {
+
+}

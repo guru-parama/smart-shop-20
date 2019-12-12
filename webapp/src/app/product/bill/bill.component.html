@@ -1,0 +1,125 @@
+<div class="jumbotron">
+    <div class="container" >
+           
+    
+            <form  [formGroup]="billForm">
+                <div class="row d-flex justify-content-between ">
+                    <div class="form-group col-xl col-lg-3 col-md-6 col-sm-12">
+                                <label for="type">
+                                    Enter UserId:
+                                </label>
+                                <select #productCode class="form-control" formControlName="userId"  >
+                                    <option value="0" selected>----Select----</option>
+                                    <option value="{{user.id}}" *ngFor="let user of userList">{{user.userId}}</option>
+                                </select>
+                        <div>
+                            <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                            <span class="text-danger small" *ngIf="billForm.get('userId').invalid && billForm.get('userId').touched">
+                                Please select valid userId !
+                            </span>
+                            <span class="text-danger small" *ngIf="billForm.value.userId == 0 && billForm.get('userId').touched">
+                                Please select valid userId !
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                        <label for="name-form">
+                            Enter date:
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="name-form" 
+                               formControlName="purchaseDate">
+                        <div>
+                            <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                            <span class="text-danger small" *ngIf="billForm.get('purchaseDate').invalid && billForm.get('purchaseDate').touched">
+                                Please enter valid Date
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                            <label for="type">
+                                Enter Product Code:
+                            </label>
+                            <select #productCode class="form-control" formControlName="productCode"  >
+                                <option value="0">----Select----</option>
+                                <option value="{{product.id}}" *ngFor="let product of productList">{{product.name}} {{product.code}}</option>
+                            </select>
+                    </div>
+                   
+              <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                        <label for="brand-form">
+                            Enter quantity
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="brand-form" 
+                               formControlName="quantity">
+                        <div>
+                            <span [style.visibility]="'hidden'" class="text-danger small">s</span>
+                            <span class="text-danger small" *ngIf="billForm.get('quantity').invalid && billForm.get('quantity').touched">
+                                Please enter valid quantity
+                            </span>
+                        </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between ">
+                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                    <button class="btn btn-primary ml-auto" 
+                            type="submit" 
+                            value="submit" 
+                            (click)="onAddToBill(billForm)">
+                    Add to bill</button>
+    
+                </div>
+                <div *ngIf="this.productAddedList.length != 0" class="form-group col-lg-4 col-md-4 col-sm-12">
+                     <button class="btn btn-danger text-light ml-auto" 
+                             type="submit" 
+                             value="submit" 
+                             (click)="onDropBill(billForm)">
+                    Drop Bill</button>
+     
+                 </div>
+                <div *ngIf="this.productAddedList.length != 0" class="form-group col-lg-4 col-md-4 col-sm-12">
+                     <button class="btn btn-primary ml-auto" 
+                             type="submit" 
+                             value="submit" 
+                             (click)="onGenerateBill(billForm)">
+                     Generate bill</button>
+                 </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<div *ngIf="generateFlag == true"><div  class="alert alert-success text-center" >Bill generated successfully</div></div>
+<div class="container table-responsive" *ngIf="this.productAddedList.length != 0">
+    <table class="container table text-dark text-center" >
+            <thead>
+              <tr>
+                <th>Product code</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Amount</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of productAddedList">
+              <td>{{product.code}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.quantity}}</td>
+              <td>{{product.ratePerQuantity | currency: 'INR'}}</td>
+              <td>{{product.amount | currency: 'INR'}}</td>
+              <td *ngIf="!isBillGenerated">
+                  <a role="button" (click)="deleteProduct(product)"><i class="icon-delete mb-1 material-icons align-middle">delete</i></a>
+            </tbody>
+            <tbody>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="text-center"><strong>Total {{getTotal() | currency: 'INR'}}</strong></div></td>
+            </tbody>
+    </table>
+    <div *ngIf="generateFlag == true" class="d-flex justify-content-end"><div  class="alert alert-success text-center" >Discounted Total Amount <strong>{{this.discountedTotalAmount | currency: 'INR'}}</strong></div></div>
+</div>
